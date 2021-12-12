@@ -1,20 +1,45 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Category {
-    final private String category_name;
-    private List<Product> product_list;
 
-    public Category(String category_name, List<Product> product_list) {
-        this.category_name = category_name;
-        this.product_list = product_list;
+// to do abstract
+public class Category {
+    private String categoryname;
+    private final List<Product> productlist ;//= new ArrayList<Product>();//сделать ее файнал
+
+    public Category(String category_name, List<Product> productlist) {
+        this.categoryname = category_name;
+        this.productlist = productlist;
+    }
+
+    public Category(String categoryname) {
+        this.categoryname = categoryname;
+        productlist = null;
     }
 
     public String getCategory_name() {
-        return category_name;
+        return categoryname;
     }
 
-    public List<Product> getProduct_list() {
-        return product_list;
+    public List<Product> getProductlist() {
+        return productlist;
     }
+
+
+    public void addProductToCategory(Product product){
+
+        this.productlist.add(product);
+
+    }
+
+    public void println(){
+        for (int i = 0; i< productlist.size(); i++)
+        {
+            System.out.println(this.categoryname+" "+ productlist.get(i).getName()+" "+ productlist.get(i).getRate()+" "+ productlist.get(i).getPrice());
+
+        }
+
+    }
+
 }
