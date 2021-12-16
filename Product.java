@@ -1,3 +1,5 @@
+package storepopulate;
+
 public class Product {
    final private String name;
    final private Double rate;

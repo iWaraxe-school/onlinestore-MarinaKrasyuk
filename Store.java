@@ -1,18 +1,21 @@
-//import jdk.jfr.Category;
+//import jdk.jfr.storepopulate.Category;
+
+import storepopulate.Category;
+import storepopulate.Product;
 
 import java.util.Map;
 
 public class Store {
-    Map <Category,Integer> category_list;
+    Map <Category,Integer> categorylist;
 
-    public Store(Map<Category, Integer> category_list) {
-        this.category_list = category_list;
+    public Store(Map<Category, Integer> categorylist) {
+        this.categorylist = categorylist;
     }
 
-    public void fillStore(Map <Category,Integer> category_list){
+    public void fillStore(Map <Category,Integer> categorylist){
         RandomStorePopulator faker = new RandomStorePopulator();
 
-        for (Map.Entry <Category,Integer> entry : category_list.entrySet()){
+        for (Map.Entry <Category,Integer> entry : categorylist.entrySet()){
             for (int i=0; i< entry.getValue();i++){
                 Product product = new Product(
                         faker.getProductName(entry.getKey()),
@@ -27,8 +30,8 @@ public class Store {
     }
     public void printlnStore()
     {
-        for (Map.Entry <Category,Integer> entry : category_list.entrySet()){
-            System.out.println("Category: ");
+        for (Map.Entry <Category,Integer> entry : categorylist.entrySet()){
+            System.out.println("storepopulate.Category: ");
             entry.getKey().println();
         }
     }

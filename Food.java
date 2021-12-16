@@ -1,8 +1,10 @@
-import java.util.ArrayList;
+package categories;
 
-public class Food extends Category{
+import storepopulate.Category;
+
+public class Food extends Category {
 
     public Food() {
-        super("Food");
+        super("categories.Food");
     }
 }

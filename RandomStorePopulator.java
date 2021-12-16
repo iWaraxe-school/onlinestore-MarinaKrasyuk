@@ -1,9 +1,5 @@
-import com.github.javafaker.Cat;
 import com.github.javafaker.Faker;
-
-import java.nio.charset.StandardCharsets;
-import java.text.DecimalFormat;
-import java.util.Locale;
+import storepopulate.Category;
 
 public  class RandomStorePopulator {
 
@@ -11,10 +7,10 @@ private final Faker faker = new Faker();
 
 public String getProductName(Category category)
 {
-    switch (category.getCategory_name()) {
-        case "Food":
+    switch (category.getCategoryName()) {
+        case "categories.Food":
             return faker.food().dish().toString();
-        case "Book" :
+        case "categories.Book" :
             return faker.book().title();
         case "toys" :
             return faker.animal().name();

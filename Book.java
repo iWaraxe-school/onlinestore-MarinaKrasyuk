@@ -1,6 +1,8 @@
-import java.util.ArrayList;
+package categories;
 
-public class Book extends Category{
+import storepopulate.Category;
+
+public class Book  extends Category{
     public Book() {
         super("Book");
     }
