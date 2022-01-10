@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sorts>
+    <sort number="1">
+        <field>price</field>
+         <SortBy>desc</SortBy>
+    </sort>
+    <sort number="2">
+        <field>name</field>
+        <SortBy>asc</SortBy>
+    </sort>
+</sorts>
