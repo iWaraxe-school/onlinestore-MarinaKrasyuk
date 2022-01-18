@@ -32,23 +32,28 @@ public class StoreApp {
         System.out.println("2-Top");
         System.out.println("3-Quit");
         Scanner scanner = new Scanner(System.in);
+        boolean flag= true;
         while (!scanner.hasNext()) {
             scanner.next();
         }
-        switch (scanner.next()) {
+        while(flag){
+        switch (scanner.next().toLowerCase()) {
             case "sort":
                 store.sortProduct();
                 break;
             case "top":
                 store.top();
+                break;
             case "quit":
                 scanner.close();
+                flag=false;
                 break;
             default:
+                System.out.println("Incorrect value");
                 System.out.println("choose from 1 to 3");
-                scanner.close();
 
 
+        }
     }
 
 
