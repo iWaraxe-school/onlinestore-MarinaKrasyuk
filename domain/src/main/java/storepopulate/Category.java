@@ -1,13 +1,17 @@
 package storepopulate;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.util.*;
 
 
 // to do abstract
 public class Category {
     private String categoryName;
     private  final List<Product> productlist = new ArrayList<Product>();
+    private  List<Product> sortproductlist = new ArrayList<>();
 
 
 
@@ -26,10 +30,39 @@ public class Category {
 
     }
 
-    public void println(){
-        for (int i = 0; i< productlist.size(); i++)
+
+
+    public static List<Product> sortProductList(List<Product> productList) throws IOException, SAXException, ParserConfigurationException {
+        List<Product> pl = new ArrayList(productList);
+        Map<String, String> sortMap = Parsing.parse();
+        for (String sortKey : sortMap.keySet()) {
+            if (sortMap.get(sortKey).equals("asc")) {
+                pl.sort(ComparatorProduct.getComparator(sortKey));
+            } else if (sortMap.get(sortKey).equals("desc")) {
+                pl.sort(ComparatorProduct.getComparator(sortKey).reversed());
+            }
+        }
+        return pl;
+    }
+
+    public void printlnAfterSort(List<Product> sortList){
+        for (int i = 0; i< sortList.size(); i++)
         {
-            System.out.println(this.categoryName +" "+ productlist.get(i).getName()+" "+ productlist.get(i).getRate()+" "+ productlist.get(i).getPrice());
+            System.out.println(this.categoryName +" "+ sortList.get(i).getName()+" "+ sortList.get(i).getRate()+" "+ sortList.get(i).getPrice());
+
+        }
+
+    }
+
+    public List<Product> getProductlist() {
+        return productlist;
+    }
+
+
+    public void println(List <Product> products){
+        for (int i = 0; i< products.size(); i++)
+        {
+            System.out.println(this.categoryName +" "+ products.get(i).getName()+" "+ products.get(i).getRate()+" "+ products.get(i).getPrice());
 
         }
 
