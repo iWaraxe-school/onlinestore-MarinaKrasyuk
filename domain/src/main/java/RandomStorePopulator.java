@@ -4,6 +4,17 @@ import storepopulate.Category;
 public  class RandomStorePopulator {
 
     private final Faker faker = new Faker();
+    private static RandomStorePopulator instance;
+
+    private RandomStorePopulator() {
+    }
+    public static RandomStorePopulator getInstance() //Singleton
+    {
+        if (instance==null){
+            instance=new RandomStorePopulator();
+        }
+        return instance;
+    }
 
     public String getProductName(Category category)
     {
@@ -12,8 +23,6 @@ public  class RandomStorePopulator {
                 return faker.food().dish().toString();
             case "Book" :
                 return faker.book().title();
-            case "toys" :
-                return faker.animal().name();
             default: return "No This Items";
         }
     }
