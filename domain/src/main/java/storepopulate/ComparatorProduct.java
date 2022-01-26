@@ -23,7 +23,4 @@ public class ComparatorProduct implements Comparator<Product> {
 
 
 
-    public static void sortProductListbyPrice(List<Product> productList) {
-        productList.sort(getComparator("price").reversed());
-    }
 }

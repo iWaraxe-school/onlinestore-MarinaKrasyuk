@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.*;
 
 
-// to do abstract
 public class Category {
     private String categoryName;
     private  final List<Product> productlist = new ArrayList<Product>();
@@ -19,7 +18,9 @@ public class Category {
         this.categoryName = categoryName;
 
     }
-
+    public List<Product> getProductlist() {
+        return productlist;
+    }
     public String getCategoryName() {
         return categoryName;
     }
@@ -35,6 +36,7 @@ public class Category {
     public static List<Product> sortProductList(List<Product> productList) throws IOException, SAXException, ParserConfigurationException {
         List<Product> pl = new ArrayList(productList);
         Map<String, String> sortMap = Parsing.parse();
+
         for (String sortKey : sortMap.keySet()) {
             if (sortMap.get(sortKey).equals("asc")) {
                 pl.sort(ComparatorProduct.getComparator(sortKey));
@@ -43,19 +45,6 @@ public class Category {
             }
         }
         return pl;
-    }
-
-    public void printlnAfterSort(List<Product> sortList){
-        for (int i = 0; i< sortList.size(); i++)
-        {
-            System.out.println(this.categoryName +" "+ sortList.get(i).getName()+" "+ sortList.get(i).getRate()+" "+ sortList.get(i).getPrice());
-
-        }
-
-    }
-
-    public List<Product> getProductlist() {
-        return productlist;
     }
 
 
