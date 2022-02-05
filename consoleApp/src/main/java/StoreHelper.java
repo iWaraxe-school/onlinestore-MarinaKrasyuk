@@ -8,6 +8,18 @@ public class StoreHelper {
 
     Reflections reflections = new Reflections ("categories", new SubTypesScanner(false));
     Map<Category, Integer> categorylist = new HashMap<Category, Integer>();
+    private static StoreHelper instance;
+
+    private StoreHelper() {
+    }
+
+    public static StoreHelper getInstance()
+    {
+        if (instance==null){
+            instance=new StoreHelper();
+        }
+        return instance;
+    }
 
     public Map<Category, Integer> reflectionCategory()
     {
