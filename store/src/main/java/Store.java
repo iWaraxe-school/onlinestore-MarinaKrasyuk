@@ -35,6 +35,16 @@ public class Store {
 
     }
 
+    public Product findProduct(String name){
+        List<Product> productlist = new ArrayList<>();
+        for (Map.Entry <Category,Integer> entry : categorylist.entrySet()){
+            productlist.addAll(entry.getKey().getProductlist());
+        }
+        Optional<Product> findproduct= productlist.stream()
+                .filter(p->p.getName().contains(name))
+                        .findFirst();
+       return findproduct.get();
+    }
     public void top() {
 
         List<Product> productList = new ArrayList<>();
