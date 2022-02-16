@@ -2,6 +2,7 @@ import org.xml.sax.SAXException;
 import storepopulate.*;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 
 public class Store {
@@ -12,20 +13,34 @@ public class Store {
         this.categorylist = categorylist;
     }
 
-    public void fillStore(Map <Category,Integer> categorylist){
-        RandomStorePopulator faker= RandomStorePopulator.getInstance(); //Singleton
+    public void fillStore(Map <Category,Integer> categorylist) {
+        RandomStorePopulator faker = RandomStorePopulator.getInstance(); //Singleton
+        int id= 0;
+        DBConnector.connection();
+        for (Map.Entry<Category, Integer> entry : categorylist.entrySet()) {
+            id++;
+            try {
+                DBConnector.insertCategoryTable(id, entry.getKey().getCategoryName());
 
-        for (Map.Entry <Category,Integer> entry : categorylist.entrySet()){
-            for (int i=0; i< entry.getValue();i++){
-               Product product = new Product(
-                        faker.getProductName(entry.getKey()),
-                        faker.getRate(),
-                        faker.getPrice(1.0,10.0));
-                entry.getKey().addProductToCategory(product);
+                for (int i = 0; i < entry.getValue(); i++) {
+                    Product product = new Product(
+                            faker.getProductName(entry.getKey()),
+                            faker.getRate(),
+                            faker.getPrice(1.0, 10.0));
+                    entry.getKey().addProductToCategory(product);
+                    DBConnector.insertProductTable(id, product);
+
+                }
+
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
+        DBConnector.closeConnection();
     }
-
 
     public void sortProduct() throws IOException, SAXException, ParserConfigurationException {
         for (Map.Entry <Category,Integer> entry : categorylist.entrySet()) {
@@ -76,7 +91,6 @@ public class Store {
             entry.getKey().println(entry.getKey().getProductlist());
         }
     }
-
 
 
 }

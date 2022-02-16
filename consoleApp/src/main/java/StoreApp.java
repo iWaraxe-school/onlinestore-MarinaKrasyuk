@@ -5,6 +5,7 @@ import storepopulate.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
@@ -12,7 +13,7 @@ import java.util.concurrent.Semaphore;
 public class StoreApp {
     static Map<Category, Integer> categorylist = new HashMap<>();
 
-    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, SQLException, ClassNotFoundException {
 
 
 
@@ -43,6 +44,10 @@ public class StoreApp {
                 break;
             case "quit":
                 scanner.close();
+                DBConnector.connection();
+                DBConnector.deleteCategoryTable();
+                DBConnector.deleteProductTable();
+                DBConnector.closeConnection();
                 flag=false;
                 break;
             case "make order":
