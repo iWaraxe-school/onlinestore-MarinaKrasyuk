@@ -1,6 +1,9 @@
-package storepopulate;
+package categories;
 
 import org.xml.sax.SAXException;
+import storepopulate.ComparatorProduct;
+import storepopulate.Parsing;
+import storepopulate.Product;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -13,7 +16,10 @@ public class Category {
     private  List<Product> sortproductlist = new ArrayList<>();
 
 
+    public Category() {
 
+
+    }
     public Category(String categoryName) {
         this.categoryName = categoryName;
 
@@ -26,12 +32,8 @@ public class Category {
     }
 
     public void addProductToCategory(Product product){
-
         productlist.add(product);
-
     }
-
-
 
     public static List<Product> sortProductList(List<Product> productList) throws IOException, SAXException, ParserConfigurationException {
         List<Product> pl = new ArrayList(productList);
@@ -52,7 +54,6 @@ public class Category {
         for (int i = 0; i< products.size(); i++)
         {
             System.out.println(this.categoryName +" "+ products.get(i).getName()+" "+ products.get(i).getRate()+" "+ products.get(i).getPrice());
-
         }
 
     }

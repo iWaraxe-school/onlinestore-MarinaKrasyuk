@@ -3,6 +3,7 @@ package storepopulate;
 
 import categories.Book;
 import categories.Categories;
+import categories.Category;
 import categories.Food;
 
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.Random;
 public class CategoryFactory {
     Map<Category, Integer> categorylist = new HashMap<Category, Integer>();
 
-    public Map<Category, Integer> createCategory(Categories type) {
+    public  Map<Category, Integer> createCategory(Categories type) {
 
     Category category = null;
         switch (type) {

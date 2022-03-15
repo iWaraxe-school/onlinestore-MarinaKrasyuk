@@ -2,16 +2,12 @@ package storepopulate;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
 
 public class ProcessingOfOrder  implements Runnable{
-
-
     Semaphore sem;
     Product product;
     String name;
     Trash trash;
-
     public ProcessingOfOrder(Semaphore sem,Trash trash,Product product, String name) {
 
         this.trash=trash;

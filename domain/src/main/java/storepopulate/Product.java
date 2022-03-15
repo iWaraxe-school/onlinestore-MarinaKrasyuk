@@ -1,10 +1,13 @@
 package storepopulate;
 
 public class Product {
-    final private String name;
-    final private Double rate;
-    final private Double price;
+     private String name;
+     private Double rate;
+     private Double price;
+    public Product() {
 
+
+    }
     public Product(String name, Double rate, Double price) {
         this.name = name;
         this.rate = rate;

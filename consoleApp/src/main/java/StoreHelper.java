@@ -1,6 +1,6 @@
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
-import storepopulate.Category;
+import categories.Category;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
