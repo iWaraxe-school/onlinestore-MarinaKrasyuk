@@ -1,5 +1,7 @@
+package populator;
+
 import com.github.javafaker.Faker;
-import storepopulate.Category;
+import categories.Category;
 
 public  class RandomStorePopulator {
 

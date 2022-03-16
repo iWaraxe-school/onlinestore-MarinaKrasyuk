@@ -1,6 +1,5 @@
 ### 8. HTTP
 
-----
 #### Materials
 
 [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
@@ -13,5 +12,4 @@ The same task as previous, but to store and get store data you should implement 
 that will handle in memory or DB your categories, but you will receive them via HTTP protocol.
 Also, you should implement `add product to cart` logic in this server, and process this request via HTTP.
 And finally, your HTTP service should be secured with basic authentication  (credentials can be hardcoded).
-For Http client side you also can use default (included in java) or use RestAssured. 
-   
+For Http client side you also can use default (included in java) or use RestAssured.
